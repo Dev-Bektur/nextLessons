@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>state</title>
+</head>
+<body>
+    <!-- state -->
+
+    <!-- <p>
+        state - бул маалымат. Өзгөрө турган маалыматты сөзсүз state ичине сактоо керек
+    </p> -->
+
+    <!-- название   функция -->
+    const [count, setCount] = useState()
+
+<!-- ------------------------------------- -->
+
+<!-- функциональный компонент -->
+import React, { useState } from 'react'
+
+const FuncCounter = () => {
+  const [count, setCount]=useState(55)
+  const [odd, setOdd]=useState(false)
+
+  const plus=()=>{
+    setCount(count+1)
+  }
+  const minus=()=>{
+    setCount(count-1)
+  }
+  const reset=()=>{
+    setCount(0)
+  }
+
+  return (
+    <div>
+      <h1>Functional Component Counter</h1>
+      <h3>{count}</h3>
+      <button onClick={plus}>+</button>
+      <button onClick={reset}>reset</button>
+      <button onClick={minus}>-</button>
+    </div>
+  )
+}
+
+
+<!-- классовый компонент -->
+import React, { Component } from 'react'
+
+class ClassCounter extends Component {
+  state = {
+    count: 6,
+    isOdd: false
+  }
+  plus=()=>{
+    this.setState({count:this.state.count+1})
+  }
+  minus=()=>{
+    this.setState({count:this.state.count-1})
+  }
+  reset=()=>{
+    this.setState({count:0})
+  }
+
+  render() {
+    return (
+      <div>
+        <h1>Class Component Counter</h1>
+        <h3>{this.state.count}</h3>
+        <button onClick={this.plus}>+</button>
+        <button onClick={this.reset}>reset</button>
+        <button onClick={this.minus}>-</button>
+      </div>
+    )
+  }
+}
+
+export default ClassCounter
+</body>
+</html>

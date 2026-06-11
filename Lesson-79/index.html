@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo project</title>
+</head>
+<body>
+    <!-- 1. mkdur todo командасы менен проект ачтык
+     2. cd todo аркылуу ичине киребиз
+     3. create vite .
+     4.framework -> react; variant -> JavaScript; yes
+     5. кереги жок нерселерди тазалайбыз
+     -->
+
+     <!-- index.html -->
+
+     <!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>todo</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
+
+<!-- ToDoAdd -->
+ import React, { Component } from 'react'
+
+export default class TodoAdd extends Component {
+  render() {
+    return (
+      <div className='d-flex'>
+        <input type='text' className='form-control' placeholder='Add new todo'/>
+        <button className='btn btn-info'>Add</button>
+      </div>
+    )
+  }
+}
+
+<!-- TodoListItem -->
+import React from 'react'
+
+const TodoListItem = () => {
+  return (
+    <span className='d-flex justify-content-between align-items-center'>
+      <span className='flex-grow-1'>Learn new words</span>
+      <button className='btn btn-outline-danger'><i className='bi bi-trash3'></i></button>
+      <button className='btn btn-outline-warning'><i className='bi bi-exclamation-circle'></i></button>
+    </span>
+  )
+}
+
+export default TodoListItem
+
+<!-- ToDoList -->
+ import React from 'react'
+import TodoListItem from '../todoListItem/TodoListItem'
+
+const TodoList = () => {
+  return (
+    <ul className='list-group'>
+      <li className='list-group-item'>
+        <TodoListItem/>
+      </li>
+    </ul>
+  )
+}
+
+export default TodoList
+
+<!-- TodoSearch -->
+
+import React, { Component } from 'react'
+
+export default class TodoSearch extends Component {
+  render() {
+    return (
+      <div className='d-flex'>
+        <input type='text' className='form-control' placeholder='Search todo'/>
+        <button className='btn btn-info'>All</button>
+        <button className='btn btn-outline-secondary'>Active</button>
+        <button className='btn btn-outline-secondary'>Done</button>
+      </div>
+    )
+  }
+}
+
+<!-- ToDoheader -->
+ import React from 'react'
+
+const TodoHeader = () => {
+  return (
+    <div className='d-flex justify-content-between align-items-center'>
+      <h1>Todo List</h1>
+      <h3>3 more todo, 2 done</h3>
+    </div>
+  )
+}
+
+export default TodoHeader
+
+<!-- App.jsx -->
+ import React from 'react'
+import TodoHeader from './components/todoHeader/TodoHeader'
+import TodoSearch from './components/todoSearch/TodoSearch'
+import TodoList from './components/todoList/TodoList'
+import TodoAdd from './components/todoAdd/TodoAdd'
+
+const App = () => {
+  return (
+    <div className='container'>
+      <TodoHeader/>
+      <TodoSearch/>
+      <TodoList/>
+      <TodoAdd/>
+    </div>
+  )
+}
+
+export default App
+</body>
+</html>
